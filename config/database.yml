@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: CodeAlpha_TaskScheduler_Backend_development
+  username: postgres
+  password: Activek123?
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
