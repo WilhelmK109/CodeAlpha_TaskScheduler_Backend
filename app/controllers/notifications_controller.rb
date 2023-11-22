@@ -6,6 +6,8 @@ class NotificationsController < ApplicationController
     @notification = @task.notifications.build(notification_params)
 
     if @notification.save
+      # Enqueue the job to send the notification
+      NotificationJob.perform_later(@notification.id)
       render json: @notification
     else
       render json: { errors: @notification.errors.full_message }, status: :unprocessable_entity
